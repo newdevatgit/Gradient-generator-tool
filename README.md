@@ -25,7 +25,7 @@ A simple and interactive tool to generate beautiful CSS background gradients wit
 ![home-page](assets/Home-page.png)
 
 ## ✍️ Author
-Arvind Singh Panwar
+- Arvind Singh Panwar
 ---
 ## 📂 How to Use
 
