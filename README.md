@@ -21,17 +21,18 @@ A simple and interactive tool to generate beautiful CSS background gradients wit
 
 ---
 
-## ✍️ Author
-Arvind Singh
-GitHub
+## Home page
+![home-page](assets/Home-page.png)
 
+## ✍️ Author
+Arvind Singh Panwar
 ---
 ## 📂 How to Use
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/gradient-generator.git
+git clone https://github.com/newdevatgit/Gradient-generator-tool
 
 Open index.html in your browser.
 
