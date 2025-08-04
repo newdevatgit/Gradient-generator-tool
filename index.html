@@ -2,80 +2,95 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gradient Generator</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient Generator</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <nav class="navbar">
-    <div class="nav-left">
-      <h1>Background Gradient Generator</h1>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <h1>Gradient Generator</h1>
+        </div>
+        <div class="nav-right">
+            <a href="https://github.com/newdevatgit/Gradient-generator-tool" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" />
+            </a>
+        </div>
+    </nav>
+
+    <div id="mainBody">
+        <div style="display: flex; justify-content: center; flex-direction: column;">
+            <div id="rightContainer">
+                <div id="container1">
+                    <button id="button1">#D1E84C</button>
+                    <button id="button2">#E0C104</button>
+                </div>
+
+                <h2 style="text-align:center;">Click to Copy</h2>
+                <div class="copyCode">
+                    background-image: linear-gradient(to right, #D1E84C, #E0C104)
+                </div>
+            </div>
+        </div>
+        <div class="Gradient"></div>
     </div>
-    <div class="nav-right">
-      <a href="https://github.com/newdevatgit" target="_blank">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRH1AfLaOoOK4C8xT6oJrRycgIDQIEHgfW5g&s"
-          alt="GitHub Logo"
-          height="50"
-        />
-      </a>
-    </div>
-  </nav>
 
-  <section>
-    <div id="container1">
-      <button id="button1">#D1E84C</button>
-      <button id="button2">#E0C104</button>
-    </div>
+    <section class="how-to-use">
+        <h2>🛠️ How to Use</h2>
+        <p>
+            To generate a custom background gradient, simply click on the two buttons labeled with color codes to
+            randomize the start and end colors of the gradient. The preview box and the CSS code will update in
+            real-time. Once you're satisfied with the result, click on the gradient code to instantly copy it to your
+            clipboard. You can then paste it directly into your CSS file or inline styles.
+        </p>
+    </section>
 
-    <h2>Click on below code to copy</h2>
 
-    <div class="copyCode">
-      background-image: linear-gradient(to right, #D1E84C, #E0C104)
-    </div>
-  </section>
 
-  <script>
-    let btn1 = document.getElementById("button1");
-    let btn2 = document.getElementById("button2");
-    let copyDiv = document.querySelector(".copyCode");
+    <script>
+        const btn1 = document.getElementById("button1");
+        const btn2 = document.getElementById("button2");
+        const copyDiv = document.querySelector(".copyCode");
+        const gradientDiv = document.querySelector(".Gradient");
 
-    let rgb1 = "#D1E84C";
-    let rgb2 = "#E0C104";
+        let rgb1 = "#D1E84C";
+        let rgb2 = "#E0C104";
 
-    const hexValues = () => {
-      const hex = "0123456789ABCDEF";
-      let color = "#";
-      for (let i = 0; i < 6; i++) {
-        color += hex[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    };
+        const hexValues = () => {
+            const hex = "0123456789ABCDEF";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += hex[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        };
 
-    const handlebtn1 = () => {
-      rgb1 = hexValues();
-      btn1.innerText = rgb1;
-      document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
-      copyDiv.innerText = `background-image: linear-gradient(to right, ${rgb1}, ${rgb2})`;
-    };
+        const updateGradient = () => {
+            gradientDiv.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+            copyDiv.innerText = `background-image: linear-gradient(to right, ${rgb1}, ${rgb2})`;
+        };
 
-    const handlebtn2 = () => {
-      rgb2 = hexValues();
-      btn2.innerText = rgb2;
-      document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
-      copyDiv.innerText = `background-image: linear-gradient(to right, ${rgb1}, ${rgb2})`;
-    };
+        btn1.addEventListener("click", () => {
+            rgb1 = hexValues();
+            btn1.innerText = rgb1;
+            updateGradient();
+        });
 
-    btn1.addEventListener("click", handlebtn1);
-    btn2.addEventListener("click", handlebtn2);
+        btn2.addEventListener("click", () => {
+            rgb2 = hexValues();
+            btn2.innerText = rgb2;
+            updateGradient();
+        });
 
-    copyDiv.addEventListener("click", () => {
-      navigator.clipboard.writeText(copyDiv.innerText);
-      alert("Code copied to clipboard");
-    });
-  </script>
+        copyDiv.addEventListener("click", () => {
+            navigator.clipboard.writeText(copyDiv.innerText);
+            alert("Copied to clipboard!");
+        });
+    </script>
+
 </body>
 
 </html>
