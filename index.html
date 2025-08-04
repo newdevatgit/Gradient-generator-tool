@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gradient Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <h1>Background Gradient Generator</h1>
+    </div>
+    <div class="nav-right">
+      <a href="https://github.com/newdevatgit" target="_blank">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRH1AfLaOoOK4C8xT6oJrRycgIDQIEHgfW5g&s"
+          alt="GitHub Logo"
+          height="50"
+        />
+      </a>
+    </div>
+  </nav>
+
+  <section>
+    <div id="container1">
+      <button id="button1">#D1E84C</button>
+      <button id="button2">#E0C104</button>
+    </div>
+
+    <h2>Click on below code to copy</h2>
+
+    <div class="copyCode">
+      background-image: linear-gradient(to right, #D1E84C, #E0C104)
+    </div>
+  </section>
+
+  <script>
+    let btn1 = document.getElementById("button1");
+    let btn2 = document.getElementById("button2");
+    let copyDiv = document.querySelector(".copyCode");
+
+    let rgb1 = "#D1E84C";
+    let rgb2 = "#E0C104";
+
+    const hexValues = () => {
+      const hex = "0123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += hex[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    };
+
+    const handlebtn1 = () => {
+      rgb1 = hexValues();
+      btn1.innerText = rgb1;
+      document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+      copyDiv.innerText = `background-image: linear-gradient(to right, ${rgb1}, ${rgb2})`;
+    };
+
+    const handlebtn2 = () => {
+      rgb2 = hexValues();
+      btn2.innerText = rgb2;
+      document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+      copyDiv.innerText = `background-image: linear-gradient(to right, ${rgb1}, ${rgb2})`;
+    };
+
+    btn1.addEventListener("click", handlebtn1);
+    btn2.addEventListener("click", handlebtn2);
+
+    copyDiv.addEventListener("click", () => {
+      navigator.clipboard.writeText(copyDiv.innerText);
+      alert("Code copied to clipboard");
+    });
+  </script>
+</body>
+
+</html>
